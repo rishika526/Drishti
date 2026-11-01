@@ -8,6 +8,8 @@
 
 > **DRISHTI** (*Train for the unseen. Secure the skies.*) is a browser-based tactical drone and counter-drone defense training simulation platform. Built for air defense personnel and security operators, DRISHTI trains trainees to **OBSERVE**, **DETECT**, **CLASSIFY**, and **RESPOND** to commercial multirotors, fixed-wing surveillance UAVs, and coordinated drone swarms across realistic 3D environments, as well as pilot manual 6-DOF FPV drones, conduct confined indoor structure inspections, and perform strategic aerial reconnaissance.
 
+Website link: https://drishti-9fe.pages.dev/
+
 ---
 
 ## 🏛️ Platform Architecture & Integrated Capabilities
