@@ -1,0 +1,180 @@
+// DRISHTI: Tactical Training Mission Catalog
+// Stage 2: Core Counter-Drone Threat Simulation
+
+import { TrainingMission, OperatorProfile, EnvironmentConfig } from '../types/simulation';
+
+export const CURRENT_OPERATOR: OperatorProfile = {
+  name: 'Maj. Vikramaditya Rathore',
+  rank: 'Field Training Commander',
+  callsign: 'DRISHTI-01',
+  unit: 'Air Defense Systems Wing',
+  status: 'Operational',
+};
+
+export const ENVIRONMENT_PRESETS: Record<string, EnvironmentConfig> = {
+  rural_day: {
+    id: 'rural_day',
+    name: 'Northern Sector - Clear Daylight',
+    lighting: {
+      sunPosition: [80, 110, 60],
+      sunIntensity: 2.2,
+      sunColor: '#FFF8E7',
+      ambientColor: '#D8E2DC',
+      ambientIntensity: 0.65,
+      skyTurbidity: 4,
+      skyRayleigh: 1.2,
+      skyMieCoefficient: 0.005,
+      fogColor: '#C8D6CF',
+      fogNear: 70,
+      fogFar: 280,
+    },
+    wind: {
+      speedKnots: 8,
+      directionDeg: 45,
+    },
+  },
+  urban_day: {
+    id: 'urban_day',
+    name: 'Metropolitan Grid - Concrete Sector',
+    lighting: {
+      sunPosition: [95, 90, 45],
+      sunIntensity: 2.4,
+      sunColor: '#FFFDF5',
+      ambientColor: '#CBD5E1',
+      ambientIntensity: 0.7,
+      skyTurbidity: 3.5,
+      skyRayleigh: 1.0,
+      skyMieCoefficient: 0.008,
+      fogColor: '#94A3B8',
+      fogNear: 60,
+      fogFar: 240,
+    },
+    wind: {
+      speedKnots: 6,
+      directionDeg: 90,
+    },
+  },
+  mountain_dusk: {
+    id: 'mountain_dusk',
+    name: 'Ridge Outpost - Late Dusk',
+    lighting: {
+      sunPosition: [-120, 25, -40],
+      sunIntensity: 1.4,
+      sunColor: '#F59E0B',
+      ambientColor: '#6B7280',
+      ambientIntensity: 0.45,
+      skyTurbidity: 8,
+      skyRayleigh: 3.5,
+      skyMieCoefficient: 0.015,
+      fogColor: '#475569',
+      fogNear: 50,
+      fogFar: 220,
+    },
+    wind: {
+      speedKnots: 14,
+      directionDeg: 120,
+    },
+  },
+  border_night: {
+    id: 'border_night',
+    name: 'Sector Border - Starlight Recon',
+    lighting: {
+      sunPosition: [0, -100, 0],
+      sunIntensity: 0.25,
+      sunColor: '#38BDF8',
+      ambientColor: '#1E293B',
+      ambientIntensity: 0.35,
+      skyTurbidity: 2,
+      skyRayleigh: 0.5,
+      skyMieCoefficient: 0.002,
+      fogColor: '#0F172A',
+      fogNear: 40,
+      fogFar: 200,
+    },
+    wind: {
+      speedKnots: 5,
+      directionDeg: 310,
+    },
+  },
+};
+
+export const FEATURED_MISSION: TrainingMission = {
+  id: 'rural-day-unknown',
+  title: 'Single Unknown Drone — Rural Daylight',
+  codename: 'VERDANT SHIELD',
+  category: ['Rural', 'Day', 'Single Drone'],
+  environment: 'rural_day',
+  location: 'Sector 4 Ground Training Facility',
+  durationMinutes: 12,
+  threatType: 'Commercial Multirotor Airframe',
+  difficulty: 'Beginner',
+  summary: 'Observe outer approach corridor over open farmland. Detect approaching unknown commercial drone, inspect sensor readings, classify object, and log official sector report.',
+  objectives: [
+    'Observe 3D airspace and detect inbound contact',
+    'Inspect optical silhouette, Doppler speed, and RF emissions',
+    'Classify unauthorized commercial airframe',
+    'Execute sector logbook record and report protocol',
+  ],
+  thumbnailGradient: 'from-[#43503E] via-[#5C6D56] to-[#7D8E77]',
+};
+
+export const MISSION_CATALOG: TrainingMission[] = [
+  FEATURED_MISSION,
+  {
+    id: 'urban-day-suspicious',
+    title: 'Suspicious Drone — Urban Environment',
+    codename: 'CONCRETE SHADOW',
+    category: ['Urban', 'Day', 'Single Drone'],
+    environment: 'urban_day',
+    location: 'Metropolitan Substation & Warehouse Grid',
+    durationMinutes: 15,
+    threatType: 'Modified Payload Quadcopter',
+    difficulty: 'Intermediate',
+    summary: 'Track low-altitude intruder masked between multi-story buildings and electrical transformers. Identify suspicious payload box and issue perimeter security alert.',
+    objectives: [
+      'Track target weaving through street corridors',
+      'Inspect slung payload attachment and blackout lighting',
+      'Classify as potentially suspicious drone',
+      'Broadcast training alert to perimeter security posts',
+    ],
+    thumbnailGradient: 'from-[#1E293B] via-[#334155] to-[#475569]',
+  },
+  {
+    id: 'night-low-vis',
+    title: 'Low-Visibility Observation — Night',
+    codename: 'DARK HORIZON',
+    category: ['Rural', 'Night', 'Single Drone'],
+    environment: 'border_night',
+    location: 'Border Outpost Echo Ridge',
+    durationMinutes: 18,
+    threatType: 'Long-Range Fixed-Wing Recon UAV',
+    difficulty: 'Intermediate',
+    summary: 'Scan nighttime horizon for flashing anti-collision strobe reflections. Analyze high-speed fixed-wing glide trajectory and escalate to Command Authority.',
+    objectives: [
+      'Detect strobe reflections against starlight',
+      'Inspect fixed-wing aerodynamics and cruising speed',
+      'Classify unverified high-altitude drone',
+      'Escalate report to regional Air Defense Command',
+    ],
+    thumbnailGradient: 'from-[#0F172A] via-[#1E293B] to-[#334155]',
+  },
+  {
+    id: 'swarm-awareness',
+    title: 'Multiple Drone Activity — Swarm Awareness',
+    codename: 'SCATTERED GALE',
+    category: ['Rural', 'Day', 'Swarm'],
+    environment: 'rural_day',
+    location: 'Sector 3 Proving Grounds',
+    durationMinutes: 20,
+    threatType: '5-Unit Decentralized Boids Cluster',
+    difficulty: 'Advanced',
+    summary: 'Recognize multi-drone presence moving in synchronized formation across northern hills. Classify swarm activity and initiate airspace containment procedure.',
+    objectives: [
+      'Identify multiple formation wingmen in airspace',
+      'Evaluate synchronized boids mesh dynamics',
+      'Classify as multiple-drone / swarm activity',
+      'Execute facility safety and containment protocol',
+    ],
+    thumbnailGradient: 'from-[#042F2E] via-[#0F766E] to-[#14B8A6]',
+  },
+];
